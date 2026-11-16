@@ -7,29 +7,29 @@ kubectl apply -f .infrastructure/todoapp-pod.yml
 
 ### To edit manifest
 ```bash
-kubectl edit pod <pod-name> -n <namespace>
+kubectl edit pod <pod-name> -n todoapp
 ```
 
 ### To delete pod:
 ```bash
-kubectl delete pod <pod-name> -n <namespace>
+kubectl delete pod <pod-name> -n todoapp
 ```
 
-### To test app uning post-forward command:
+### To test app using post-forwarding:
 ```bash
 kubectl port-forward pod/todoapp 8080:8080 -n todoapp
 ```
 
 ### To test the application using the busyboxplus:curl container:
-Find todoapp IP:
+Find `todoapp` Pod IP:
 ```bash
-kubectl get pods -o wide -n mateapp
+kubectl get pods -o wide -n todoapp
 ```
 Enter busybox container:
 ```bash
-kubectl -n mateapp exec -it busybox -- sh
+kubectl -n todoapp exec -it busybox -- sh
 ```
 Use curl command:
 ```bash
-curl <todoapp-ip>:8080
+curl http://<todoapp-ip>:8080
 ```
